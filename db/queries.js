@@ -59,4 +59,56 @@ module.exports = {
         `;
         await pool.query(SQL, [id]);
     },
+
+    getItems: async () => {
+        const SQL = `
+            SELECT *
+            FROM items
+        `;
+        const { rows: items } = await pool.query(SQL);
+
+        return items;
+    },
+
+    createItem: async (name, quantity, price, description, category_id) => {
+        const SQL = `
+            INSERT INTO items (name, quantity, price, description, category_id)
+            VALUES($1, $2, $3, $4, %5)
+        `;
+        await pool.query(SQL, [name, quantity, price, description, category_id]);
+    },
+
+    readItem: async (id) => {
+        const SQL = `
+            SELECT *
+            FROM items
+            WHERE id = $1
+        `;
+        const { rows: [item] } = await pool.query(SQL, [id]);
+
+        return item;
+    },
+
+    updateItem: async (name, quantity, price, description, category_id) => {
+        const SQL = `
+            UPDATE items
+            SET
+                name = $1,
+                quantity = $2,
+                price = $3,
+                description = $4,
+                updated_at = CURRENT_TIMESTAMP
+                category_id = $5,
+            WHERE id = $6
+        `;
+        await pool.query(SQL, [name, quantity, price, description, category_id, id]);
+    },
+
+    deleteItem: async (id) => {
+        const SQL = `
+            DELETE FROM items
+            WHERE id = $1
+        `;
+        await pool.query(SQL, [id]);
+    },
 }
