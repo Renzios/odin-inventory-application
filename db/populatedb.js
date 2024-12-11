@@ -47,7 +47,6 @@ const SQL = `
 `;
 
 async function main() {
-    console.log(process.env.PGDATABASE);
     const client = new Client({
         host: process.env.PGHOST,
         user: process.env.PGUSER,
