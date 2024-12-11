@@ -89,7 +89,7 @@ module.exports = {
         return item;
     },
 
-    updateItem: async (name, quantity, price, description, category_id) => {
+    updateItem: async (id, name, quantity, price, description, category_id) => {
         const SQL = `
             UPDATE items
             SET
