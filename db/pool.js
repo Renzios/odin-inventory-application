@@ -5,5 +5,5 @@ module.exports = new Pool({
     user: process.env.PGUSER,
     database: process.env.PGDATABASE,
     password: process.env.PGPASSWORD,
-    port: process.env.PGHOST
+    port: process.env.PGPORT
 });

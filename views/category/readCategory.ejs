@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read Category</title>
+</head>
+<body>
+    <p>Name: <%= category.name %></p>
+    <p>Description: <%= category.description %></p>
+    <p>Created At: <%= category.created_at %></p>
+    <p>Updated At: <%= category.updated_at %></p>
+    <p>Items:</p>
+    <ul>
+        <% items.forEach(item => { %>
+            <li>
+                <%= item.name %>
+            </li>
+        <% }); %>
+    </ul>
+    <a href="/category">Back</a>
+</body>
+</html>

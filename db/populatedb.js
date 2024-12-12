@@ -3,7 +3,8 @@ require("dotenv").config();
 const { Client } = require("pg");
 
 const SQL = `
-    CREATE TABLE IF NOT EXISTS categories (
+    DROP TABLE IF EXISTS categories CASCADE;
+    CREATE TABLE categories (
         id SERIAL PRIMARY KEY,
         name VARCHAR(45) UNIQUE NOT NULL,
         description TEXT NOT NULL,
@@ -11,7 +12,8 @@ const SQL = `
         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );
 
-    CREATE TABLE IF NOT EXISTS items (
+    DROP TABLE IF EXISTS items CASCADE;
+    CREATE TABLE items (
         id SERIAL PRIMARY KEY,
         name VARCHAR(45) UNIQUE NOT NULL,
         quantity INTEGER CHECK (quantity >= 0) NOT NULL,
