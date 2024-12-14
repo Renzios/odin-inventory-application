@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Item</title>
+</head>
+<body>
+    <%- include("../partials/errors.ejs") %>
+    <form action="/item/<%= item.id %>/update" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" value=<%= item.name %>>
+        <label for="quantity">Quantity:</label>
+        <input type="number" name="quantity" id="quantity" value=<%= item.quantity %>>
+        <label for="price">Price:</label>
+        <input type="number" step="0.01" name="price" id="price" value=<%= item.price %>>
+        <label for="description">Description:</label>
+        <textarea name="description" id="description"><%= item.description %></textarea>
+        <select name="category_id" id="category_id">
+            <% categories.forEach(category => { %>
+                <option value=<%= category.id %> <%= category.id == item.category_id ? "selected" : "" %>><%= category.name %></option>
+            <% }); %>
+        </select>
+        <button type="submit">Submit</button>
+    </form>
+    <a href="/item">Back</a>
+</body>
+</html>

@@ -5,7 +5,7 @@ const path = require("node:path");
 
 const indexRouter = require("./routes/indexRouter");
 const categoryRouter = require("./routes/categoryRouter");
-// const itemRouter = require("./routes/itemRouter");
+const itemRouter = require("./routes/itemRouter");
 
 const app = express();
 
@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/", indexRouter);
 app.use("/category", categoryRouter);
-// app.use("/item", itemRouter);
+app.use("/item", itemRouter);
 
 app.use((err, req, res, next) => {
     console.error(err);

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item</title>
+</head>
+<body>
+    <a href="/item/create">Create</a>
+    <ul>
+        <% items.forEach(item => { %>
+            <li>
+                <%= item.name %>
+                <a href="/item/<%= item.id %>/read">Read</a>
+                <a href="/item/<%= item.id %>/update">Update</a>
+                <form action="item/<%= item.id %>/delete" method="POST">
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        <% }); %>
+    </ul>
+    <a href="/">Back</a>
+</body>
+</html>

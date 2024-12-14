@@ -73,7 +73,7 @@ module.exports = {
     createItem: async (name, quantity, price, description, category_id) => {
         const SQL = `
             INSERT INTO items (name, quantity, price, description, category_id)
-            VALUES($1, $2, $3, $4, %5)
+            VALUES($1, $2, $3, $4, $5)
         `;
         await pool.query(SQL, [name, quantity, price, description, category_id]);
     },
@@ -97,8 +97,8 @@ module.exports = {
                 quantity = $2,
                 price = $3,
                 description = $4,
-                updated_at = CURRENT_TIMESTAMP
-                category_id = $5,
+                updated_at = CURRENT_TIMESTAMP,
+                category_id = $5
             WHERE id = $6
         `;
         await pool.query(SQL, [name, quantity, price, description, category_id, id]);
